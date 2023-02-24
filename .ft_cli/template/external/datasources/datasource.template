@@ -1,0 +1,10 @@
+import '../../{{datasourcePathInterface}}/{{datasourceNameFileInterface}}.{{datasourceExtensionInterface}}';
+
+class {{datasourceNameClass}} implements {{datasourceNameClassInterface}} {
+  @override
+  Future<void> call() {
+    // TODO: implement call
+    throw UnimplementedError();
+  }
+}
+  

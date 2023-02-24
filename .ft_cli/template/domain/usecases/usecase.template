@@ -1,0 +1,10 @@
+import '{{usecaseNameFileInterface}}.dart';
+
+class {{usecaseNameClass}} implements {{usecaseNameClassInterface}} {
+  @override
+  Future<void> call() {
+    // TODO: implement call
+    throw UnimplementedError();
+  }
+}
+  

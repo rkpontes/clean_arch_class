@@ -1,0 +1,4 @@
+abstract class {{repositoryNameClassInterface}} {
+  Future<void> call();
+}
+  

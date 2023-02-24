@@ -1,0 +1,4 @@
+class {{dtoNameClass}} {
+  {{dtoNameClass}}();
+}
+  
