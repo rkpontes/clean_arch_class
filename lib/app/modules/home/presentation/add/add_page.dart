@@ -14,12 +14,9 @@ class _AddPageState extends State<AddPage> {
   final controller = Modular.get<AddController>();
   final formKey = GlobalKey<FormState>();
 
-  final TextEditingController _nameTextController =
-      TextEditingController(text: 'Sid Silva');
-  final TextEditingController _emailTextController =
-      TextEditingController(text: 'sid@email.com');
-  final TextEditingController _phoneTextController =
-      TextEditingController(text: '99999999999');
+  final TextEditingController _nameTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _phoneTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
