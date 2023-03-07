@@ -53,4 +53,22 @@ class HttpClientAdapter {
 
     return res.data;
   }
+
+  Future delete(
+    String path, {
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
+    var res = await client.delete(
+      path,
+      data: data,
+      queryParameters: queryParameters,
+      options: options,
+      cancelToken: cancelToken,
+    );
+
+    return res.data;
+  }
 }
