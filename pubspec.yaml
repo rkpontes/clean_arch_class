@@ -12,6 +12,7 @@ dependencies:
   mobx: 2.1.4
   flutter_mobx: 2.0.6+5
   dio: 5.0.1
+  flutter_slidable: 2.0.0
   
 dev_dependencies:
   flutter_test:
