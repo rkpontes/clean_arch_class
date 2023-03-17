@@ -7,39 +7,37 @@ import 'package:clean_arch_class/app/modules/home/domain/usecases/get_users_usec
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'users_mock.dart';
 
-import 'get_users_mock.dart';
 @GenerateNiceMocks([MockSpec<GetUsersDataSource>()])
 import 'get_users_usecase_test.mocks.dart';
 
 void main() {
-  late final GetUsersDataSource getUsersDataSource;
-  late final GetUsersRepository getUsersRepositoryImpl;
-  late final GetUsersUseCase getUsersUseCaseImpl;
+  final GetUsersDataSource getUsersDataSource = MockGetUsersDataSource();
+  final GetUsersRepository getUsersRepositoryImpl =
+      GetUsersRepositoryImpl(getUsersDataSource);
+  final GetUsersUseCase getUsersUseCaseImpl =
+      GetUsersUseCaseImpl(getUsersRepositoryImpl);
 
-  setUp(() {
-    getUsersDataSource = MockGetUsersDataSource();
-    getUsersRepositoryImpl = GetUsersRepositoryImpl(getUsersDataSource);
-    getUsersUseCaseImpl = GetUsersUseCaseImpl(getUsersRepositoryImpl);
-  });
+  group('Get Users', () {
+    test('testar se foi sucesso na requisicao', () async {
+      when(getUsersDataSource()).thenAnswer((_) async => mockList);
 
-  test('testar se foi sucesso na requisicao', () async {
-    when(getUsersDataSource()).thenAnswer((_) async => mock);
+      var res = await getUsersUseCaseImpl();
 
-    var res = await getUsersUseCaseImpl();
+      expect(res.success, isTrue);
+      expect(res.body, isA<List<UserDto>>());
+      expect(res.message, isNull);
+    });
 
-    expect(res.success, isTrue);
-    expect(res.body, isA<List<UserDto>>());
-  });
+    test('testar se nao foi sucesso na requisiçao', () async {
+      when(getUsersDataSource()).thenThrow(Exception("ERROR"));
 
-  // testar se nao foi sucesso na requisiçao
-  test('testar se nao foi sucesso na requisiçao', () async {
-    when(getUsersDataSource()).thenThrow(Exception("ERROR"));
+      var res = await getUsersUseCaseImpl();
 
-    var res = await getUsersUseCaseImpl();
-
-    expect(res.success, isFalse);
-    expect(res.body, isNull);
-    expect(res.message, isA<String>());
+      expect(res.success, isFalse);
+      expect(res.body, isNull);
+      expect(res.message, isA<String>());
+    });
   });
 }
