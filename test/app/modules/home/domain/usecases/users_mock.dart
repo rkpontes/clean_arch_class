@@ -1,4 +1,4 @@
-var mock = [
+var mockList = [
   {
     "createdAt": "2023-02-23T17:43:14.115Z",
     "name": "Francis Gleason",
@@ -35,3 +35,11 @@ var mock = [
     "id": "5"
   }
 ];
+
+var mockDto = {
+  "createdAt": "2023-02-23T17:43:14.115Z",
+  "name": "Francis Gleason",
+  "email": "Albina.Ratke@yahoo.com",
+  "phone": "1-947-485-9590 x279",
+  "id": "1"
+};
